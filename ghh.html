@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VK Bridge Example</title>
+</head>
+<body>
+    <h1>VK Bridge Example</h1>
+    <button id="saveDataBtn">Сохранить данные</button>
+    <button id="getDataBtn">Получить данные</button>
+
+    <script src="https://vk.com/js/api/3.0/widget.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>   
+     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    <script>
+        // Обработчик нажатия для кнопки "Сохранить данные"
+        document.getElementById('saveDataBtn').addEventListener('click', function() {
+            // Логика сохранения данных на сервере с использованием vkBridge
+            // ...
+            vkBridge.send('VKWebAppStorageSet', {key:'mone',value:'45'}).then((data) => {if (data.result){alert(JSON.stringify(data));}}); 
+        });
+
+        // Обработчик нажатия для кнопки "Получить данные"
+        document.getElementById('getDataBtn').addEventListener('click', function() {
+            // Логика получения данных с сервера с использованием vkBridge
+            // ...
+            vkBridge.send('VKWebAppStorageGet',{ keys:['mone']}).then((data) => { if (data.keys) {alert(data);} });  
+        });
+        jQuery(document).ready(function($)
+        {
+            vkBridge.send('VKWebAppInit');        
+        });
+    </script>
+</body>
+</html>
