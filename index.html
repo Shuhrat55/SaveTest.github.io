@@ -26,7 +26,12 @@
         document.getElementById('getDataBtn').addEventListener('click', function() {
             // Логика получения данных с сервера с использованием vkBridge
             // ...
-            vkBridge.send('VKWebAppStorageGet',{ keys:['mone']}).then((data) => { if (data.keys) {var resultt = data[0].value.trim();alert(JSON.stringify(resultt));} });  
+            vkBridge.send('VKWebAppStorageGet',{ keys:['mone']}).then((data) => { if (data.keys) {
+              
+        var jsonData =JSON.parse(JSON.stringify(data));
+        var result = jsonData[0].value.trim();
+              alert(result);
+            } });  
         });
         jQuery(document).ready(function($)
         {
