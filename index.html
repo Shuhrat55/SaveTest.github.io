@@ -27,9 +27,7 @@
             // Логика получения данных с сервера с использованием vkBridge
             // ...
             vkBridge.send('VKWebAppStorageGet',{ keys:['mone']}).then((data) => { if (data.keys) {
-              
-        var jsonData =JSON.parse(data);
-        var result = jsonData[0].value.trim();
+        var result = data.keys.value.trim();
               alert(result);
             } });  
         });
