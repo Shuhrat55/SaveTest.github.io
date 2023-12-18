@@ -19,7 +19,7 @@
         document.getElementById('saveDataBtn').addEventListener('click', function() {
             // Логика сохранения данных на сервере с использованием vkBridge
             // ...
-            vkBridge.send('VKWebAppStorageSet', {key:'mone',value:'45'}).then((data) => {if (data){alert(data);}}); 
+            vkBridge.send('VKWebAppStorageSet', {key:'mone',value:'45'}).then((data) => {if (data){var result = data[0].value.trim();alert(result);}}); 
         });
 
         // Обработчик нажатия для кнопки "Получить данные"
