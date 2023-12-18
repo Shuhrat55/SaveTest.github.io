@@ -19,14 +19,14 @@
         document.getElementById('saveDataBtn').addEventListener('click', function() {
             // Логика сохранения данных на сервере с использованием vkBridge
             // ...
-            vkBridge.send('VKWebAppStorageSet', {key:'mone',value:'45'}).then((data) => {if (data){var result = data[0].value.trim();alert(result);}}); 
+            vkBridge.send('VKWebAppStorageSet', {key:'mone',value:'45'}).then((data) => {if (data.result){alert(JSON.stringify(data));}}); 
         });
 
         // Обработчик нажатия для кнопки "Получить данные"
         document.getElementById('getDataBtn').addEventListener('click', function() {
             // Логика получения данных с сервера с использованием vkBridge
             // ...
-            vkBridge.send('VKWebAppStorageGet',{ keys:['mone']}).then((data) => { if (data.keys) {alert(JSON.stringify(data.keys));} });  
+            vkBridge.send('VKWebAppStorageGet',{ keys:['mone']}).then((data) => { if (data.keys) {var resultt = data[0].value.trim();alert(JSON.stringify(resultt));} });  
         });
         jQuery(document).ready(function($)
         {
