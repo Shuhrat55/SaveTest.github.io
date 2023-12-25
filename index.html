@@ -28,7 +28,7 @@
         document.getElementById('getDataBtn').addEventListener('click', function() {
             // Логика получения данных с сервера с использованием vkBridge
             // ...
-            vkBridge.send('VKWebAppStorageGet',{ keys:['mone']}).then((data) => { if (data.keys) {
+            vkBridge.send('VKWebAppStorageGet',{ keys:[0]}).then((data) => { if (data.keys) {
         var money = data.keys[0].key.trim();
         var score = data.keys[0].value.trim();
               alert("Money: " + money + ", Score: " + score);
