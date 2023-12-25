@@ -32,10 +32,8 @@
             // ...
             vkBridge.send('VKWebAppStorageGet',{ keys:['save']}).then((data) => { if (data.keys) {
         var save = data.keys[0].value.trim();
-        var money=save.Money.trim();
-        var score=save.Score.trim();
 
-              alert("Money: " + money + ", Score: " + score);
+              alert(save);
             } });  
         });
         jQuery(document).ready(function($)
