@@ -21,16 +21,20 @@
             // ...
             var scores='45';
             var moneys='150';
-            vkBridge.send('VKWebAppStorageSet', {key:moneys,value:scores}).then((data) => {if (data.result){alert(JSON.stringify(data));}}); 
+            var sv=JSON.stringify("Money: " + moneys + ", Score: " + scores);
+
+            vkBridge.send('VKWebAppStorageSet', {key:'save',value:sv}).then((data) => {if (data.result){alert(JSON.stringify(data));}}); 
         });
 
         // Обработчик нажатия для кнопки "Получить данные"
         document.getElementById('getDataBtn').addEventListener('click', function() {
             // Логика получения данных с сервера с использованием vkBridge
             // ...
-            vkBridge.send('VKWebAppStorageGet',{ keys:[0]}).then((data) => { if (data.keys) {
-        var money = data.keys[0].key.trim();
-        var score = data.keys[0].value.trim();
+            vkBridge.send('VKWebAppStorageGet',{ keys:['save']}).then((data) => { if (data.keys) {
+        var save = data.keys[0].value.trim();
+        var money=save.Money.trim();
+        var score=save.Score.trim();
+
               alert("Money: " + money + ", Score: " + score);
             } });  
         });
