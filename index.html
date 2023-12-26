@@ -31,7 +31,7 @@
             vkBridge.send('VKWebAppStorageGet',{ keys:['money']}).then((data) => { if (data.keys) {
       //  var save = data.keys[0].value.trim();
 
-              alert(data);
+              alert(JSON.stringify(data));
             } });  
         });
         jQuery(document).ready(function($)
