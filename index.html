@@ -49,9 +49,8 @@
             // ...
             var score='45';
             var money='150';
-           // alert("Money: " + money + ", Score: " + score);
             var savedata=("Money: " + money + ", Score: " + score);
-            vkBridge.send('VKWebAppStorageSet', {key:'save',value:savedata}).then((data) => {if (data.result){//alert(JSON.stringify(data));
+            vkBridge.send('VKWebAppStorageSet', {key:'save',value:savedata}).then((data) => {if (data.result){alert(JSON.stringify(data));
 }}); 
         });
 
@@ -63,7 +62,6 @@
             var save = data.keys[0].value.trim();
                 var jsonStr = save.replace(/(\w+):(\d+)/g, "$1:'$2'");
                 var jsonObj = JSON.parse(jsonStr);
-                alert(JSON.stringify(jsonObj));
                 var moneyV = JSON.stringify(jsonObj.Money);
                 var scoreV = JSON.stringify(jsonObj.Score);
                 alert("save Money: " + moneyV + ", save Score: " + scoreV);
