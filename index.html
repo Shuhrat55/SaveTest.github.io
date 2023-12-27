@@ -49,9 +49,10 @@
             // ...
             var score='45';
             var money='150';
-            alert("Money: " + money + ", Score: " + score);
+           // alert("Money: " + money + ", Score: " + score);
             var savedata=("Money: " + money + ", Score: " + score);
-            vkBridge.send('VKWebAppStorageSet', {key:'save',value:savedata}).then((data) => {if (data.result){alert(JSON.stringify(data));}}); 
+            vkBridge.send('VKWebAppStorageSet', {key:'save',value:savedata}).then((data) => {if (data.result){//alert(JSON.stringify(data));
+}}); 
         });
 
         // Обработчик нажатия для кнопки "Получить данные"
@@ -61,6 +62,7 @@
             vkBridge.send('VKWebAppStorageGet',{ keys:['save']}).then((data) => { if (data.keys) {
             var save = data.keys[0].value.trim();
                 var jsonStr = JSON.stringify (save);
+                alert(jsonStr);
                 var jsonObj = JSON.parse(jsonStr);
                 var moneyV = JSON.stringify(jsonObj.Money);
                 var scoreV = JSON.stringify(jsonObj.Score);
