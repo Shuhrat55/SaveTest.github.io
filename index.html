@@ -49,23 +49,23 @@
             // ...
             var score='45';
             var money='150';
-            var savedata=("Money: " + money + ", Score: " + score);
-            vkBridge.send('VKWebAppStorageSet', {key:'save',value:savedata}).then((data) => {if (data.result){alert(JSON.stringify(data));
-}}); 
+            vkBridge.send('VKWebAppStorageSet', {key:'money',value:money}).then((data) => {if (data.result){alert(JSON.stringify(data));
+        }});
+            vkBridge.send('VKWebAppStorageSet', {key:'score',value:score}).then((data) => {if (data.result){alert(JSON.stringify(data));
+        }}); 
         });
 
         // Обработчик нажатия для кнопки "Получить данные"
         document.getElementById('getDataBtn').addEventListener('click', function() {
             // Логика получения данных с сервера с использованием vkBridge
             // ...
-            vkBridge.send('VKWebAppStorageGet',{ keys:['save']}).then((data) => { if (data.keys) {
-            var save = data.keys[0].value.trim();
-               // var jsonStr = save.replace(/(\w+):(\d+)/g, "$1:'$2'");
-                var jsonObj = JSON.parse(save);
-                var moneyV = JSON.stringify(jsonObj.Money);
-                var scoreV = JSON.stringify(jsonObj.Score);
-                alert("save Money: " + moneyV + ", save Score: " + scoreV);
-            } });  
+            vkBridge.send('VKWebAppStorageGet',{ keys:['money']}).then((data) => { if (data.keys) {
+            var save_money = data.keys[0].value.trim();   
+        } });  
+            vkBridge.send('VKWebAppStorageGet',{ keys:['score']}).then((data) => { if (data.keys) {
+            var save_score = data.keys[0].value.trim();   
+        } });  
+            alert("Money:"+save_money+" , Score:"+save_score);
         });
         jQuery(document).ready(function($)
         {
