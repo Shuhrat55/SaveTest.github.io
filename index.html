@@ -32,8 +32,8 @@
             // ...
             vkBridge.send('VKWebAppStorageGet',{ keys:['save']}).then((data) => { if (data.keys) {
             var save = data.keys[0].value.trim();
-                var jsonStr = JSON.stringify (save);
-                var jsonObj = JSON.parse(jsonStr);
+                //var jsonStr = JSON.stringify (save);
+                var jsonObj = JSON.parse(save);
                 var moneyV = jsonObj.Money;
                 var scoreV = jsonObj.Score;
                 alert("save Money: " + moneyV + ", save Score: " + scoreV);
