@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VK Bridge Example</title>
+    <title>Test</title>
 </head>
 <body>
-    <h1>VK Bridge Example</h1>
+    <h1>Test</h1>
     <button id="saveDataBtn">Сохранить данные</button>
     <button id="getDataBtn">Получить данные</button>
 
@@ -32,7 +32,7 @@
             // ...
             vkBridge.send('VKWebAppStorageGet',{ keys:['save']}).then((data) => { if (data.keys) {
             var save = data.keys[0].value.trim();
-                var jsonStr = { "${save.replace(/:/g, '":"').replace(/,/g, '", "')}"};
+                var jsonStr = JSON.stringify (save);
                 var jsonObj = JSON.parse(jsonStr);
                 var moneyV = jsonObj.Money;
                 var scoreV = jsonObj.Score;
