@@ -60,12 +60,12 @@
             // Логика получения данных с сервера с использованием vkBridge
             // ...
             vkBridge.send('VKWebAppStorageGet',{ keys:['money']}).then((data) => { if (data.keys) {
-            var save_money = data.keys[0].value.trim();   
-        } });  
-            vkBridge.send('VKWebAppStorageGet',{ keys:['score']}).then((data) => { if (data.keys) {
-            var save_score = data.keys[0].value.trim();   
-        } });  
-            alert("Money:"+save_money+" , Score:"+save_score);
+            var save_money = data.keys[0].value.trim();  
+                vkBridge.send('VKWebAppStorageGet',{ keys:['score']}).then((data) => { if (data.keys) {
+                var save_score = data.keys[0].value.trim(); 
+                    alert("Money:"+save_money+" , Score:"+save_score);
+        } });
+        } });    
         });
         jQuery(document).ready(function($)
         {
