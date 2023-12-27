@@ -4,17 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://vk.com/js/api/3.0/widget.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>   
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 </head>
 <body>
     <h1>Test</h1>
     <button id="saveDataBtn">Сохранить данные</button>
     <button id="getDataBtn">Получить данные</button>
 
-    <script src="https://vk.com/js/api/3.0/widget.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>   
-     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
     <script>
+       
         // Обработчик нажатия для кнопки "Сохранить данные"
         document.getElementById('saveDataBtn').addEventListener('click', function() {
             // Логика сохранения данных на сервере с использованием vkBridge
@@ -32,10 +60,10 @@
             // ...
             vkBridge.send('VKWebAppStorageGet',{ keys:['save']}).then((data) => { if (data.keys) {
             var save = data.keys[0].value.trim();
-                //var jsonStr = JSON.stringify (save);
-                var jsonObj = JSON.parse(save);
-                var moneyV = jsonObj.Money;
-                var scoreV = jsonObj.Score;
+                var jsonStr = JSON.stringify (save);
+                var jsonObj = JSON.parse(jsonStr);
+                var moneyV = JSON.stringify(jsonObj.Money);
+                var scoreV = JSON.stringify(jsonObj.Score);
                 alert("save Money: " + moneyV + ", save Score: " + scoreV);
             } });  
         });
